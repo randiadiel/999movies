@@ -21,11 +21,9 @@ const SnapshotCard = (props: SnapshotCardProps) => {
   const handleHoverEnter = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     const { top, left } = e.currentTarget.getBoundingClientRect();
-    timeoutRef.current = setTimeout(
-      () =>
-        showHoverDialog({ image: props.image, id, title, overview, top, left }),
-      500
-    );
+    timeoutRef.current = setTimeout(() => {
+      showHoverDialog({ image: props.image, id, title, overview, top, left });
+    }, 500);
   };
 
   const handleHoverLeave = () => {
