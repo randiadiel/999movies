@@ -4,7 +4,11 @@ type SnapshotCardProps = ImageProps;
 
 const SnapshotCard = (props: SnapshotCardProps) => {
   const imageProps = props;
-  return <Image {...imageProps} alt={imageProps.alt} />;
+  return (
+    <div>
+      <Image {...imageProps} alt={imageProps.alt} />
+    </div>
+  );
 };
 
 export default SnapshotCard;
