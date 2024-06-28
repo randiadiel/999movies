@@ -16,7 +16,7 @@ const MovieList = (props: MovieListProps) => {
 
   return (
     <>
-      {data.results?.map((movie: any) => (
+      {data?.results?.map((movie: any) => (
         <SnapshotCard
           key={movie.poster_path}
           width={150}
