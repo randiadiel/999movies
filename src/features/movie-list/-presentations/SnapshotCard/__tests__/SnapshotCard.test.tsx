@@ -1,9 +1,5 @@
-// SnapshotCard.test.tsx
-
-import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import SnapshotCard from "../SnapshotCard";
-import { useHoverDialogContext } from "@/contexts/HoverDialogContext"; // Assuming this context is correctly mocked or provided in tests
 
 const showHoverDialogMock = jest.fn();
 
