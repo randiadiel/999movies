@@ -1,0 +1,71 @@
+// Changing scale and width here does require you to also change it in the constants.
+
+@keyframes dialog-scaling {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes dialog-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dialogContainer {
+  transform: scale(1.2);
+  position: absolute;
+  animation: dialog-scaling 0.3s;
+  display: flex;
+  background: rgb(34, 33, 33);
+
+  max-width: 400px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dialogContent {
+  padding: 10px;
+  margin: 0;
+  opacity: 1;
+  animation: dialog-opacity 0.3s;
+
+  & h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  & p {
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.watchlistButton {
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: #525559;
+  }
+}
+
+.watchlistButtonActive {
+  background-color: #3b9b52;
+}

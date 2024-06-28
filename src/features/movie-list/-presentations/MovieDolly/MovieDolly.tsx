@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import sty from "./MovieDolly.module.css";
+import MovieDollyWrapper from "./components/MovieDollyWrapper";
 
 interface MovieDollyProps {
   title: string;
@@ -11,7 +12,7 @@ const MovieDolly = (props: PropsWithChildren<MovieDollyProps>) => {
   return (
     <div className={sty.movieDollyContainer}>
       <h3 className={sty.movieDollyTitle}>{title}</h3>
-      <div className={sty.moviesWrapper}>{children}</div>
+      <MovieDollyWrapper>{children}</MovieDollyWrapper>
     </div>
   );
 };

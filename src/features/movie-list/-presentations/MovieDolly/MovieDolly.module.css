@@ -2,12 +2,6 @@
   padding: 20px;
 }
 
-.moviesWrapper {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
 .movieDollyTitle {
   margin-bottom: 0.5rem;
 }

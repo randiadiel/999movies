@@ -16,13 +16,18 @@ const MovieList = (props: MovieListProps) => {
 
   return (
     <>
-      {data?.results?.map((movie: any) => (
+      {data.results?.map((movie: any) => (
         <SnapshotCard
           key={movie.poster_path}
-          width={150}
-          height={250}
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-          alt="poster"
+          image={{
+            width: 150,
+            height: 250,
+            src: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+            alt: "poster",
+          }}
+          id={movie.id}
+          title={movie.title}
+          overview={movie.overview}
         />
       ))}
     </>
