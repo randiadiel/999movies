@@ -1,0 +1,12 @@
+.moviesWrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
