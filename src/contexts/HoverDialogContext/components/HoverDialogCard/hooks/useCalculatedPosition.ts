@@ -1,5 +1,6 @@
 import { useMemo, RefObject } from "react";
 import { CardPositionMetaData } from "@/contexts/HoverDialogContext/models";
+import { CARD_SCALED_WIDTH } from "../constants";
 
 const useCalculatedPosition = (
   dialogMetaData: CardPositionMetaData,
@@ -12,10 +13,17 @@ const useCalculatedPosition = (
     const { top: cardTop, left: cardLeft } = dialogMetaData;
 
     const calculatedTop = cardTop - wrapperTop;
-    const calculatedLeft = cardLeft - wrapperLeft;
+    let calculatedLeft = cardLeft - wrapperLeft;
 
-    const marginedTop = calculatedTop < 0 ? 10 : calculatedTop;
-    const marginedLeft = calculatedLeft < 0 ? 10 : calculatedLeft;
+    const viewportWidth = window.innerWidth;
+
+    // Adjust left position to keep dialog within viewport
+    if (calculatedLeft + CARD_SCALED_WIDTH > viewportWidth) {
+      calculatedLeft = viewportWidth - CARD_SCALED_WIDTH;
+    }
+
+    const marginedTop = calculatedTop < 0 ? 80 : calculatedTop;
+    const marginedLeft = calculatedLeft < 0 ? 80 : calculatedLeft;
 
     return {
       top: `${marginedTop}px`,

@@ -1,3 +1,5 @@
+// Changing scale and width here does require you to also change it in the constants.
+
 @keyframes dialog-scaling {
   0% {
     transform: scale(1);
@@ -17,8 +19,8 @@
 }
 
 .dialogContainer {
+  transform: scale(1.2);
   position: absolute;
-  transform: scale(120%);
   animation: dialog-scaling 0.3s;
   display: flex;
   background: rgb(34, 33, 33);
