@@ -1,4 +1,6 @@
-import { MovieTVSnapshot } from "@/models/types";
+
+import { MovieTVSnapshot } from "@/features/movie-list/-models/types/movie";
+import useOnce from "@/hooks/useOnce";
 import React, {
   createContext,
   useContext,
@@ -21,9 +23,10 @@ const WatchlistContext = createContext<WatchlistContextProps | undefined>(
 const WATCHLIST_KEY = "999movies_watchlist";
 
 const WatchlistProvider = ({ children }: { children: ReactNode }) => {
-  const [watchlist, setWatchlist] = useState<MovieTVSnapshot[]>();
+  const [watchlist, setWatchlist] = useState<MovieTVSnapshot[]>([]);
 
-  useEffect(() => {
+  useOnce(() => {
+    // Using effect will make sure it runs on the client on subsequent render
     try {
       const storedWatchlist = localStorage.getItem(WATCHLIST_KEY);
       if (storedWatchlist) {
@@ -32,10 +35,10 @@ const WatchlistProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       setWatchlist([]);
     }
-  }, []);
+  })
 
   useEffect(() => {
-    if (watchlist !== null)
+    if (watchlist !== undefined)
       localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
   }, [watchlist]);
 

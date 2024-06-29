@@ -4,11 +4,11 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { discoverTVFetchOption } from "../../-repositories/discover-movies/useDiscoverTv";
-import MovieList, { MovieListProps } from "./TVList";
+import DiscoverTvList, { DiscoverTvListProps } from "./DiscoverTvList";
 
-type MovieListComponentProps = MovieListProps;
+type DiscoverTvListComponentProps = DiscoverTvListProps;
 
-const MovieListComponent = async (props: MovieListComponentProps) => {
+const DiscoverTvListComponent = async (props: DiscoverTvListComponentProps) => {
   const { filters } = props;
   const queryClient = new QueryClient();
 
@@ -16,9 +16,9 @@ const MovieListComponent = async (props: MovieListComponentProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <MovieList {...props} />
+      <DiscoverTvList {...props} />
     </HydrationBoundary>
   );
 };
 
-export default MovieListComponent;
+export default DiscoverTvListComponent;

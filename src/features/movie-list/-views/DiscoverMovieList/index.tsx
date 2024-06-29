@@ -3,12 +3,12 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import MovieList, { MovieListProps } from "./MovieList";
+import DiscoverMovieList, { DiscoverMovieListProps } from "./DiscoverMovieList";
 import { discoverMovieFetchOption } from "../../-repositories/discover-movies/useDiscoverMovies";
 
-type MovieListComponentProps = MovieListProps;
+type DiscoverMovieListComponentProps = DiscoverMovieListProps;
 
-const MovieListComponent = async (props: MovieListComponentProps) => {
+const DiscoverMovieListComponent = async (props: DiscoverMovieListComponentProps) => {
   const { filters } = props;
   const queryClient = new QueryClient();
 
@@ -16,9 +16,9 @@ const MovieListComponent = async (props: MovieListComponentProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <MovieList {...props} />
+      <DiscoverMovieList {...props} />
     </HydrationBoundary>
   );
 };
 
-export default MovieListComponent;
+export default DiscoverMovieListComponent;

@@ -8,6 +8,7 @@ import useCalculatedPosition from "./hooks/useCalculatedPosition";
 import sty from "./HoverDialogCard.module.scss";
 
 import { CardPositionMetaData } from "../../models";
+import useFallbackImage from "@/hooks/useFallbackImage";
 
 interface HoverDialogCardProps {
   dialogMetaData: CardPositionMetaData;
@@ -18,6 +19,7 @@ interface HoverDialogCardProps {
 const HoverDialogCard = (props: HoverDialogCardProps) => {
   const { dialogMetaData, globalWrapperRef, setDialogMetaData } = props;
   const hoverDialogRef = useRef<HTMLDivElement>(null);
+  const { fallbackImage, onImageError } = useFallbackImage();
 
   const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
   const isThisInWatchlist = isInWatchlist(dialogMetaData.id);
@@ -40,7 +42,10 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
       style={{ ...calculatedPosition }}
       className={sty.dialogContainer}
     >
-      <Image {...dialogMetaData.image} alt={"dialog-focus-trap"} />
+      <Image {...dialogMetaData.image} src={fallbackImage || dialogMetaData.image.src} alt={"dialog-focus-trap"} onError={(e) => {
+        if (dialogMetaData.image.onError) dialogMetaData.image.onError(e);
+        onImageError();
+      }} />
       <div className={sty.dialogContent}>
         <h4>{dialogMetaData.title}</h4>
         <p>{dialogMetaData.overview}</p>
@@ -52,9 +57,8 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
               ? removeFromWatchlist(dialogMetaData.id)
               : addToWatchlist(dialogMetaData)
           }
-          className={`${sty.watchlistButton} ${
-            isThisInWatchlist ? sty.watchlistButtonActive : ""
-          }`}
+          className={`${sty.watchlistButton} ${isThisInWatchlist ? sty.watchlistButtonActive : ""
+            }`}
         >
           {isThisInWatchlist ? isHoveredText : "Add to Watchlist"}
         </button>
