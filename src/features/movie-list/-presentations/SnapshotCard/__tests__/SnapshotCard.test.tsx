@@ -24,7 +24,7 @@ describe("SnapshotCard", () => {
         image={mockImage}
         title="Test Title"
         overview="Test Overview"
-      />
+      />,
     );
 
     const imageElement = getByAltText(mockImage.alt);

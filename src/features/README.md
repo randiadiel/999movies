@@ -4,4 +4,5 @@ For me features serves a set of SDK grouped into the functionality of the busine
 
 Also every directory prefixed with `-` means the directory is private. Importing it directly from the outside might cause breaking changes. This is only some kind of good standardization that prevent hard future impovements for the components / features.
 
+## Improvements
 this feature has dependecy to HoverDialogContext, should be improved

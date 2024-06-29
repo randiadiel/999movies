@@ -1,0 +1,27 @@
+.searchBarContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .searchBarInput {
+    width: 80%;
+    max-width: 600px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .searchBarInput::placeholder {
+    color: #999;
+  }
+  
+  .searchBarInput:focus {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }

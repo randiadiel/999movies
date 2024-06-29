@@ -8,7 +8,7 @@ interface HoverDialogContextProps {
 }
 
 const HoverDialogContext = createContext<HoverDialogContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 const HoverDialogProvider = ({ children }: { children: ReactNode }) => {
@@ -37,7 +37,7 @@ const useHoverDialogContext = () => {
   const context = useContext(HoverDialogContext);
   if (context === undefined) {
     throw new Error(
-      "useHoverDialogContext must be used within an HoverDialogProvider"
+      "useHoverDialogContext must be used within an HoverDialogProvider",
     );
   }
   return context;

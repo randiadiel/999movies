@@ -2,21 +2,21 @@
 
 import { SnapshotCard } from "../..";
 import { TmdbDiscoverFilters } from "../../-models/types/filter";
-import { useDiscoverMovies } from "../../-repositories/discover-movies";
+import { useDiscoverTv } from "../../-repositories/discover-movies";
 
-export interface MovieListProps {
+export interface DiscoverTvListProps {
   filters: TmdbDiscoverFilters[];
 }
 
-const MovieList = (props: MovieListProps) => {
+const DiscoverTvList = (props: DiscoverTvListProps) => {
   const { filters } = props;
-  const { data } = useDiscoverMovies(filters) as {
+  const { data } = useDiscoverTv(filters) as {
     data: { results: [{ poster_path: string }] };
   };
 
   return (
     <>
-      {data.results?.map((movie: any) => (
+      {data?.results?.map((movie: any) => (
         <SnapshotCard
           key={movie.poster_path}
           image={{
@@ -26,7 +26,7 @@ const MovieList = (props: MovieListProps) => {
             alt: "poster",
           }}
           id={movie.id}
-          title={movie.title}
+          title={movie.original_name}
           overview={movie.overview}
         />
       ))}
@@ -34,4 +34,4 @@ const MovieList = (props: MovieListProps) => {
   );
 };
 
-export default MovieList;
+export default DiscoverTvList;

@@ -6,6 +6,7 @@ import Sidebar from "@/components/Sidebar";
 import Providers from "./providers";
 import "./globals.css";
 import sty from "./layout.module.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <SpeedInsights />
         <Providers>
           <Sidebar />
           <main className={sty.mainContainer}>{children}</main>

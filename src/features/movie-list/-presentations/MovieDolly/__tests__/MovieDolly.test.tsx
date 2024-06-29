@@ -7,7 +7,7 @@ describe("MovieDolly Component", () => {
     const { getByText, getByTestId } = render(
       <MovieDolly title={testTitle}>
         <div data-testid="test-child">Child Element</div>
-      </MovieDolly>
+      </MovieDolly>,
     );
 
     const titleElement = getByText(testTitle);

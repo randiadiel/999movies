@@ -1,6 +1,6 @@
 const objectToSearchParams = (
   url: URL,
-  obj: Record<string, any> | undefined
+  obj: Record<string, any> | undefined,
 ) => {
   const params = url.searchParams;
   for (const key in obj) {
@@ -13,14 +13,16 @@ const objectToSearchParams = (
 export const fetchMovieDB = async (
   path: `/${string}`,
   queryString?: Record<string, unknown>,
-  options?: RequestInit
+  options?: RequestInit,
 ) => {
-  const url = new URL(`${process.env.MOVIE_DB_API_HOSTNAME}${path}`);
+  const url = new URL(
+    `${process.env.NEXT_PUBLIC_MOVIE_DB_API_HOSTNAME}${path}`,
+  );
   objectToSearchParams(url, queryString);
 
   const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${process.env.MOVIE_DB_READ_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_READ_ACCESS_TOKEN}`,
     },
     ...options,
   });

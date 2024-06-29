@@ -1,5 +1,4 @@
-import { ImageProps } from "next/image";
-import { MovieTVSnapshot } from "@/models/types";
+import { MovieTVSnapshot } from "@/features/movie-list/-models/types/movie";
 
 export interface CardPositionMetaData extends MovieTVSnapshot {
   top: number;
