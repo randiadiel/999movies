@@ -13,6 +13,8 @@ const useOnce = (callback: () => void): void => {
       callback();
       hasRun.current = true;
     }
+    // This is expected, to prevent any unnecessary rerender since we will use it once.
+    // eslint-disable-next-line
   }, []);
 };
 
