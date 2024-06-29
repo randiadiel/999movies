@@ -1,9 +1,12 @@
-import { UndefinedInitialDataOptions, keepPreviousData, useQuery } from "@tanstack/react-query";
+import {
+  UndefinedInitialDataOptions,
+  keepPreviousData,
+  useQuery,
+} from "@tanstack/react-query";
 import { searchMovieFetcher } from "./fetchers/searchFetcher";
 
-
 export const searchMovieFetchOption = (
-  query: string
+  query: string,
 ): UndefinedInitialDataOptions => ({
   queryKey: [`search/movies`, query],
   queryFn: async () => searchMovieFetcher(query),

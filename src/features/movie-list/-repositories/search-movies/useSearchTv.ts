@@ -1,9 +1,12 @@
-import { UndefinedInitialDataOptions, keepPreviousData, useQuery } from "@tanstack/react-query";
+import {
+  UndefinedInitialDataOptions,
+  keepPreviousData,
+  useQuery,
+} from "@tanstack/react-query";
 import { searchTvFetcher } from "./fetchers/searchFetcher";
 
-
 export const searchTvFetchOption = (
-  query: string
+  query: string,
 ): UndefinedInitialDataOptions => ({
   queryKey: [`search/tvs`, query],
   queryFn: async () => searchTvFetcher(query),

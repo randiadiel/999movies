@@ -1,7 +1,7 @@
 import Search from "@/modules/search";
 
 const SearchRoute = () => {
-    return (<Search />);
-}
+  return <Search />;
+};
 
 export default SearchRoute;

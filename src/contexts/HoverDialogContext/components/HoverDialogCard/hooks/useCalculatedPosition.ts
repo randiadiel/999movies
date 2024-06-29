@@ -4,7 +4,7 @@ import { CARD_SCALED_WIDTH } from "../constants";
 
 const useCalculatedPosition = (
   dialogMetaData: CardPositionMetaData,
-  globalWrapperRef: RefObject<HTMLDivElement>
+  globalWrapperRef: RefObject<HTMLDivElement>,
 ) => {
   return useMemo(() => {
     if (!dialogMetaData || !globalWrapperRef.current) return null;

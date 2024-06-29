@@ -6,7 +6,7 @@ describe("MovieDollyWrapper", () => {
     const { getByTestId } = render(
       <MovieDollyWrapper>
         <div data-testid="test-child">Child Element</div>
-      </MovieDollyWrapper>
+      </MovieDollyWrapper>,
     );
 
     const childElement = getByTestId("test-child");

@@ -1,4 +1,3 @@
-
 import { MovieTVSnapshot } from "@/features/movie-list/-models/types/movie";
 import useOnce from "@/hooks/useOnce";
 import React, {
@@ -17,7 +16,7 @@ interface WatchlistContextProps {
 }
 
 const WatchlistContext = createContext<WatchlistContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 const WATCHLIST_KEY = "999movies_watchlist";
@@ -35,7 +34,7 @@ const WatchlistProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       setWatchlist([]);
     }
-  })
+  });
 
   useEffect(() => {
     if (watchlist !== undefined)

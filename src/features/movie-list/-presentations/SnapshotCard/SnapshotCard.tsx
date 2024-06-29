@@ -5,7 +5,7 @@ import Image, { ImageProps, StaticImageData } from "next/image";
 import { useHoverDialogContext } from "@/contexts/HoverDialogContext";
 import sty from "./SnapshotCard.module.css";
 
-import PosterPlaceholder from './assets/poster-placeholder.png'
+import PosterPlaceholder from "./assets/poster-placeholder.png";
 import useFallbackImage from "@/hooks/useFallbackImage";
 
 interface SnapshotCardProps {
@@ -19,7 +19,7 @@ const SnapshotCard = (props: SnapshotCardProps) => {
   const { id, image, title, overview } = props;
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
-  const { fallbackImage, onImageError } = useFallbackImage()
+  const { fallbackImage, onImageError } = useFallbackImage();
   const { showHoverDialog } = useHoverDialogContext();
 
   const handleHoverEnter = (e: MouseEvent<HTMLDivElement>) => {
@@ -38,10 +38,16 @@ const SnapshotCard = (props: SnapshotCardProps) => {
 
   return (
     <div onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave}>
-      <Image className={sty.snapshotImage} {...image} src={fallbackImage || image.src} alt={image.alt} onError={(e) => {
-        if (image.onError) image.onError(e);
-        onImageError();
-      }} />
+      <Image
+        className={sty.snapshotImage}
+        {...image}
+        src={fallbackImage || image.src}
+        alt={image.alt}
+        onError={(e) => {
+          if (image.onError) image.onError(e);
+          onImageError();
+        }}
+      />
     </div>
   );
 };

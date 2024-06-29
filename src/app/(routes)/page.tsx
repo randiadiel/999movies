@@ -22,7 +22,9 @@ export default function Home() {
         />
       </MovieDolly>
       <MovieDolly title="Top Rated TV Series of the week">
-        <DiscoverTvList filters={[TOP_RATED_OF_RANGE_DATE_FILTER(lastWeek, today)]} />
+        <DiscoverTvList
+          filters={[TOP_RATED_OF_RANGE_DATE_FILTER(lastWeek, today)]}
+        />
       </MovieDolly>
     </div>
   );

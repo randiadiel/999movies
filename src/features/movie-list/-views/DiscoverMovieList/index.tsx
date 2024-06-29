@@ -8,7 +8,9 @@ import { discoverMovieFetchOption } from "../../-repositories/discover-movies/us
 
 type DiscoverMovieListComponentProps = DiscoverMovieListProps;
 
-const DiscoverMovieListComponent = async (props: DiscoverMovieListComponentProps) => {
+const DiscoverMovieListComponent = async (
+  props: DiscoverMovieListComponentProps,
+) => {
   const { filters } = props;
   const queryClient = new QueryClient();
 

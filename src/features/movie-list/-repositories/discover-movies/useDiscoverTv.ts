@@ -3,7 +3,7 @@ import { tvDiscoverFetcher } from "./fetchers/discoverFetcher";
 import { TmdbDiscoverFilters } from "../../-models/types/filter";
 
 export const discoverTVFetchOption = (
-  filters: TmdbDiscoverFilters[]
+  filters: TmdbDiscoverFilters[],
 ): UndefinedInitialDataOptions => ({
   queryKey: [`discover/tv`, filters],
   queryFn: async () => tvDiscoverFetcher(filters),

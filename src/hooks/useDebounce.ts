@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 /**
  * A custom hook that debounces a value, updating it only after a specified delay.
@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
  * @param delay - The delay in milliseconds before updating the debounced value.
  * @returns The debounced value.
  */
-const useDebounce = <T,>(value: T, delay: number): T => {
+const useDebounce = <T>(value: T, delay: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {

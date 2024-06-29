@@ -7,7 +7,7 @@ export const TOP_RATED_FILTER: TmdbDiscoverFilters = {
 
 export const TOP_RATED_OF_RANGE_DATE_FILTER = (
   start: Date,
-  end: Date
+  end: Date,
 ): TmdbDiscoverFilters => {
   const startDateIso = start.toISOString().split("T")[0];
   const endDateIso = end.toISOString().split("T")[0];

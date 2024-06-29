@@ -28,7 +28,7 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
 
   const calculatedPosition = useCalculatedPosition(
     dialogMetaData,
-    globalWrapperRef
+    globalWrapperRef,
   );
 
   const isHoveredText = isHovered
@@ -42,10 +42,15 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
       style={{ ...calculatedPosition }}
       className={sty.dialogContainer}
     >
-      <Image {...dialogMetaData.image} src={fallbackImage || dialogMetaData.image.src} alt={"dialog-focus-trap"} onError={(e) => {
-        if (dialogMetaData.image.onError) dialogMetaData.image.onError(e);
-        onImageError();
-      }} />
+      <Image
+        {...dialogMetaData.image}
+        src={fallbackImage || dialogMetaData.image.src}
+        alt={"dialog-focus-trap"}
+        onError={(e) => {
+          if (dialogMetaData.image.onError) dialogMetaData.image.onError(e);
+          onImageError();
+        }}
+      />
       <div className={sty.dialogContent}>
         <h4>{dialogMetaData.title}</h4>
         <p>{dialogMetaData.overview}</p>
@@ -57,8 +62,9 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
               ? removeFromWatchlist(dialogMetaData.id)
               : addToWatchlist(dialogMetaData)
           }
-          className={`${sty.watchlistButton} ${isThisInWatchlist ? sty.watchlistButtonActive : ""
-            }`}
+          className={`${sty.watchlistButton} ${
+            isThisInWatchlist ? sty.watchlistButtonActive : ""
+          }`}
         >
           {isThisInWatchlist ? isHoveredText : "Add to Watchlist"}
         </button>
