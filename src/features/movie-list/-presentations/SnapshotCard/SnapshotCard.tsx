@@ -41,7 +41,7 @@ const SnapshotCard = (props: SnapshotCardProps) => {
       <Image className={sty.snapshotImage} {...image} src={fallbackImage || image.src} alt={image.alt} onError={(e) => {
         if (image.onError) image.onError(e);
         onImageError();
-      }} placeholder="blur" />
+      }} />
     </div>
   );
 };
