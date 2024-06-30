@@ -10,6 +10,16 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Explanation
+
+- Since there are requirements for SEO so i use nextjs witch currently have the most stable SSR System.
+- Using React Query to easily manage caches of the query done in the client. It also support prefetching before it being hydrated in the client.
+- Separate reusable logics of movie into features or SDK
+- Create necessary utils and helpers for the app
+- Using context as the state management for global state
+- Deploy using vercel
+- Hook it up to my personal DNS 
+
 ## If I Had Given More Time
 
 - I'm using react query for caching purposes (performance) and currently only support modern browsers, therefore I should use polyfills for the old browsers.
