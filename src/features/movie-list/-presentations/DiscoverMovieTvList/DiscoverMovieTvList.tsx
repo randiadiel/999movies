@@ -23,6 +23,10 @@ const DiscoverMovieTvList = (props: DiscoverMovieTvListProps) => {
           title={movie.title}
           overview={movie.overview}
           itemType="movie"
+          backdropPath={movie.backdropPath}
+          posterPath={movie.posterPath}
+          voteAverage={movie.voteAverage}
+          voteCount={movie.voteCount}
         />
       ))}
     </>

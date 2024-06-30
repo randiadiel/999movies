@@ -1,9 +1,9 @@
-import { StaticImageData } from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export interface MovieTVSnapshotAttributes {
   id: number;
-  posterPath: string | StaticImageData;
-  backdropPath: string | StaticImageData;
+  posterPath: string | StaticImport;
+  backdropPath: string | StaticImport;
   title: string;
   overview: string;
   voteAverage: number;

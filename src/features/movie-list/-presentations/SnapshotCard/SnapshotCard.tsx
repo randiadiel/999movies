@@ -8,17 +8,22 @@ import sty from "./SnapshotCard.module.css";
 import useFallbackImage from "@/hooks/useFallbackImage";
 import { PLACEHOLDER_DATA_URL } from "./constants";
 import Link from "next/link";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface SnapshotCardProps {
   id: number;
   image: ImageProps;
   title: string;
   overview: string;
+  voteAverage: number;
+  voteCount: number;
+  posterPath: string | StaticImport;
+  backdropPath: string | StaticImport;
   itemType: "tv" | "movie";
 }
 
 const SnapshotCard = (props: SnapshotCardProps) => {
-  const { id, image, title, overview, itemType } = props;
+  const { id, image, title, overview, itemType, ...rest } = props;
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const { fallbackImage, onImageError } = useFallbackImage();
@@ -28,7 +33,15 @@ const SnapshotCard = (props: SnapshotCardProps) => {
     e.preventDefault();
     const { top, left } = e.currentTarget.getBoundingClientRect();
     timeoutRef.current = setTimeout(() => {
-      showHoverDialog({ image: props.image, id, title, overview, top, left });
+      showHoverDialog({
+        imageProps: props.image,
+        id,
+        title,
+        overview,
+        top,
+        left,
+        ...rest,
+      });
     }, 500);
   };
 

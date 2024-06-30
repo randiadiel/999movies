@@ -1,4 +1,5 @@
 export type * from "./-models/types/filter";
+export type * from "./-models/types/movie";
 export * from "./-models/constants/filter";
 
 export { default as SnapshotCard } from "./-presentations/SnapshotCard";

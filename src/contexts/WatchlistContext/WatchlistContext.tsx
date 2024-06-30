@@ -1,4 +1,4 @@
-import { MovieTVSnapshot } from "@/features/movie-list/-models/types/movie";
+import { MovieTVSnapshotAttributes } from "@/features/movie-list";
 import useOnce from "@/hooks/useOnce";
 import React, {
   createContext,
@@ -9,8 +9,8 @@ import React, {
 } from "react";
 
 interface WatchlistContextProps {
-  watchlist: MovieTVSnapshot[];
-  addToWatchlist: (movie: MovieTVSnapshot) => void;
+  watchlist: MovieTVSnapshotAttributes[];
+  addToWatchlist: (movie: MovieTVSnapshotAttributes) => void;
   removeFromWatchlist: (movieId: number) => void;
   isInWatchlist: (movieId: number) => boolean;
 }
@@ -22,7 +22,7 @@ const WatchlistContext = createContext<WatchlistContextProps | undefined>(
 const WATCHLIST_KEY = "999movies_watchlist";
 
 const WatchlistProvider = ({ children }: { children: ReactNode }) => {
-  const [watchlist, setWatchlist] = useState<MovieTVSnapshot[]>([]);
+  const [watchlist, setWatchlist] = useState<MovieTVSnapshotAttributes[]>([]);
 
   useOnce(() => {
     // Using effect will make sure it runs on the client on subsequent render
@@ -41,7 +41,7 @@ const WatchlistProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
   }, [watchlist]);
 
-  const addToWatchlist = (movie: MovieTVSnapshot) => {
+  const addToWatchlist = (movie: MovieTVSnapshotAttributes) => {
     setWatchlist((prev = []) => [...prev, movie]);
   };
 
