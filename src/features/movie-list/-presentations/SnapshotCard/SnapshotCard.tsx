@@ -7,6 +7,7 @@ import sty from "./SnapshotCard.module.css";
 
 import PosterPlaceholder from "./assets/poster-placeholder.png";
 import useFallbackImage from "@/hooks/useFallbackImage";
+import { PLACEHOLDER_DATA_URL } from "./constants";
 
 interface SnapshotCardProps {
   id: number;
@@ -47,6 +48,7 @@ const SnapshotCard = (props: SnapshotCardProps) => {
           if (image.onError) image.onError(e);
           onImageError();
         }}
+        placeholder={PLACEHOLDER_DATA_URL}
       />
     </div>
   );
