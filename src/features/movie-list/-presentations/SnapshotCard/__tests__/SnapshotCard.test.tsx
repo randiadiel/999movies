@@ -24,6 +24,11 @@ describe("SnapshotCard", () => {
         image={mockImage}
         title="Test Title"
         overview="Test Overview"
+        voteCount={0}
+        backdropPath={""}
+        itemType="movie"
+        posterPath={""}
+        voteAverage={0}
       />,
     );
 
@@ -33,12 +38,17 @@ describe("SnapshotCard", () => {
     // Wait for the hover timeout
     await waitFor(() => {
       expect(showHoverDialogMock).toHaveBeenCalledWith({
-        image: mockImage,
+        imageProps: mockImage,
         id: 1,
         title: "Test Title",
         overview: "Test Overview",
         top: expect.any(Number),
         left: expect.any(Number),
+        voteCount: expect.any(Number),
+        backdropPath: "",
+        itemType: "movie",
+        posterPath: "",
+        voteAverage: expect.any(Number),
       });
     });
 

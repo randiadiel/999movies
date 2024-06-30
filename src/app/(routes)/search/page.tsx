@@ -1,7 +1,11 @@
 import Search from "@/modules/search";
 
-const SearchRoute = () => {
-  return <Search />;
+const SearchRoute = ({
+  searchParams,
+}: {
+  searchParams: Record<string, string>;
+}) => {
+  return <Search searchParams={searchParams} />;
 };
 
 export default SearchRoute;

@@ -1,14 +1,4 @@
-const objectToSearchParams = (
-  url: URL,
-  obj: Record<string, any> | undefined,
-) => {
-  const params = url.searchParams;
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      params.append(key, obj[key]);
-    }
-  }
-};
+import { objectToSearchParams } from "@/utils/url";
 
 export const fetchMovieDB = async (
   path: `/${string}`,
@@ -18,7 +8,7 @@ export const fetchMovieDB = async (
   const url = new URL(
     `${process.env.NEXT_PUBLIC_MOVIE_DB_API_HOSTNAME}${path}`,
   );
-  objectToSearchParams(url, queryString);
+  objectToSearchParams(url.searchParams, queryString);
 
   const response = await fetch(url, {
     headers: {

@@ -1,29 +1,45 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
-import { MovieDolly } from "@/features/movie-list";
-import SearchMovieList from "@/features/movie-list/-views/SearchMovieList";
-import SearchTvList from "@/features/movie-list/-views/SearchTvList/SearchTvList";
+import { useDeferredValue } from "react";
+import {
+  DiscoverMovieTvList,
+  MovieDolly,
+  useSearchMovies,
+  useSearchTv,
+} from "@/features/movie-list";
 import useDebounce from "@/hooks/useDebounce";
+import { useQueryState } from "@/hooks/useSearchParams";
 import SearchBar from "@/components/SearchBar";
 import CenterNotice from "@/components/CenterNotice";
 
-const Search = () => {
-  const [query, setQuery] = useState("");
+export interface SearchProps {
+  searchParams: Record<string, string>;
+}
+
+const Search = (props: SearchProps) => {
+  const { searchParams } = props;
+  const [query, setQuery] = useQueryState("query", searchParams?.query);
   const debouncedQuery = useDebounce(query, 500);
   const defferedQuery = useDeferredValue(debouncedQuery);
+
+  const { data: tvData } = useSearchTv(defferedQuery);
+  const { data: movieData } = useSearchMovies(defferedQuery);
 
   return (
     <>
       <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
       {query ? (
         <>
-          <MovieDolly title="Movie Result">
-            <SearchMovieList query={defferedQuery} />
-          </MovieDolly>
-          <MovieDolly title="TV Result">
-            <SearchTvList query={defferedQuery} />
-          </MovieDolly>
+          {movieData && (
+            <MovieDolly title="Movie Result">
+              <DiscoverMovieTvList list={movieData} />
+            </MovieDolly>
+          )}
+          {tvData && (
+            <MovieDolly title="TV Result">
+              <DiscoverMovieTvList list={tvData} />
+            </MovieDolly>
+          )}
         </>
       ) : (
         <CenterNotice title="Start Searching your Movie / TV" />

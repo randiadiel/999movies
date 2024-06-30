@@ -1,8 +1,7 @@
 "use client";
 
 import { useWatchlist } from "@/contexts/WatchlistContext";
-import { MovieDolly } from "@/features/movie-list";
-import SnapshotCardList from "@/features/movie-list/-presentations/SnapshotCardList/SnapshotCardList";
+import { DiscoverMovieTvList, MovieDolly } from "@/features/movie-list";
 
 const WatchList = () => {
   const { watchlist } = useWatchlist();
@@ -10,7 +9,7 @@ const WatchList = () => {
   return (
     <div>
       <MovieDolly title="Your Watchlist">
-        <SnapshotCardList list={watchlist} />
+        <DiscoverMovieTvList list={watchlist} />
       </MovieDolly>
     </div>
   );
