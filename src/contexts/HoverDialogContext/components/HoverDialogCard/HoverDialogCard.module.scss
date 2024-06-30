@@ -23,7 +23,7 @@
   position: absolute;
   animation: dialog-scaling 0.3s;
   display: flex;
-  background: rgb(34, 33, 33);
+  background: rgb(var(--card-rgb));
 
   max-width: 400px;
   border-radius: 4px;
@@ -53,7 +53,6 @@
 }
 
 .watchlistButton {
-  color: white;
   border: 1px solid white;
   border-radius: 4px;
   padding: 5px 10px;
@@ -62,7 +61,7 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    background-color: #525559;
+    background-color: #848990;
   }
 }
 

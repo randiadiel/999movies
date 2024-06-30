@@ -15,26 +15,27 @@ const SearchTvList = (props: SearchTvListProps) => {
     isInitialLoading: boolean;
   };
 
-  if (isInitialLoading) return <>Loading...</>;
+  if (!data?.results.length && !isLoading && query)
+    return <>No Movie with Keyword {query} Found</>;
 
   return (
     <>
-      {data?.results.length || isLoading
-        ? data?.results?.map((tv: any) => (
-            <SnapshotCard
-              key={tv.id}
-              image={{
-                width: 150,
-                height: 250,
-                src: `https://image.tmdb.org/t/p/original${tv.poster_path}`,
-                alt: "poster",
-              }}
-              id={tv.id}
-              title={tv.original_name}
-              overview={tv.overview}
-            />
-          ))
-        : `No TV Series with Keyword ${query} Found`}
+      {data?.results?.map((tv: any) => (
+        <SnapshotCard
+          key={tv.id}
+          image={{
+            width: 150,
+            height: 250,
+            src: tv.poster_path
+              ? `https://image.tmdb.org/t/p/original${tv.poster_path}`
+              : "",
+            alt: "poster",
+          }}
+          id={tv.id}
+          title={tv.original_name}
+          overview={tv.overview}
+        />
+      ))}
     </>
   );
 };

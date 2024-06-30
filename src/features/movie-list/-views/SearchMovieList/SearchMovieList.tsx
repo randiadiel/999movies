@@ -9,32 +9,33 @@ interface SearchMovieListProps {
 
 const SearchMovieList = (props: SearchMovieListProps) => {
   const { query } = props;
-  const { data, isLoading, isInitialLoading } = useSearchMovies(query) as {
+  const { data, isLoading } = useSearchMovies(query) as {
     data: { results: [{ poster_path: string }] };
     isLoading: boolean;
     isInitialLoading: boolean;
   };
 
-  if (isInitialLoading) return <>Loading...</>;
+  if (!data?.results.length && !isLoading && query)
+    return <>No Movie with Keyword {query} Found</>;
 
   return (
     <>
-      {data?.results.length || isLoading
-        ? data?.results?.map((movie: any) => (
-            <SnapshotCard
-              key={movie.id}
-              image={{
-                width: 150,
-                height: 250,
-                src: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-                alt: "poster",
-              }}
-              id={movie.id}
-              title={movie.title}
-              overview={movie.overview}
-            />
-          ))
-        : `No Movie with Keyword ${query} Found`}
+      {data?.results?.map((movie: any) => (
+        <SnapshotCard
+          key={movie.id}
+          image={{
+            width: 150,
+            height: 250,
+            src: movie.poster_path
+              ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+              : "",
+            alt: "poster",
+          }}
+          id={movie.id}
+          title={movie.title}
+          overview={movie.overview}
+        />
+      ))}
     </>
   );
 };
