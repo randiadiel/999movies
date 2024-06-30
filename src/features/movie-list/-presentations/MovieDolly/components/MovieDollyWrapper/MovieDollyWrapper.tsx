@@ -15,6 +15,7 @@ const MovieDollyWrapper = (props: PropsWithChildren) => {
   });
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     if (!wrapperRef.current) return;
     const slider = wrapperRef.current;
     const startX = e.pageX - slider.offsetLeft;

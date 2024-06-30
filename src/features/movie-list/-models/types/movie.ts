@@ -1,15 +1,11 @@
-import { ImageProps } from "next/image";
+import { StaticImageData } from "next/image";
 
-export interface MovieSnapshotAttributes {
-  posterPath: string;
-  backdropPath: string;
-  title: string;
-  overview: string;
-}
-
-export interface MovieTVSnapshot {
+export interface MovieTVSnapshotAttributes {
   id: number;
+  posterPath: string | StaticImageData;
+  backdropPath: string | StaticImageData;
   title: string;
   overview: string;
-  image: ImageProps;
+  voteAverage: number;
+  voteCount: number;
 }

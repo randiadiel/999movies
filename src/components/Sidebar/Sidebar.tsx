@@ -5,8 +5,8 @@ const Sidebar = () => {
   return (
     <nav className={sty.sidebarContainer}>
       <Link href={"/"}>H</Link>
-      <Link href={"search"}>S</Link>
-      <Link href={"watchlist"}>W</Link>
+      <Link href={"/search"}>S</Link>
+      <Link href={"/watchlist"}>W</Link>
     </nav>
   );
 };
