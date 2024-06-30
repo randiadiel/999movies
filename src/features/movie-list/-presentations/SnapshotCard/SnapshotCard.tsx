@@ -40,6 +40,7 @@ const SnapshotCard = (props: SnapshotCardProps) => {
         overview,
         top,
         left,
+        itemType,
         ...rest,
       });
     }, 500);

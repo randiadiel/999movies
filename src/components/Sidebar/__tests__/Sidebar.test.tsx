@@ -29,8 +29,8 @@ describe("Sidebar", () => {
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute("href", "/");
     expect(searchLink).toBeInTheDocument();
-    expect(searchLink).toHaveAttribute("href", "search");
+    expect(searchLink).toHaveAttribute("href", "/search");
     expect(watchlistLink).toBeInTheDocument();
-    expect(watchlistLink).toHaveAttribute("href", "watchlist");
+    expect(watchlistLink).toHaveAttribute("href", "/watchlist");
   });
 });

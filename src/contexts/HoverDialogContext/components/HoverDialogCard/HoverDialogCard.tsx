@@ -19,7 +19,7 @@ interface HoverDialogCardProps {
 
 const HoverDialogCard = (props: HoverDialogCardProps) => {
   const { dialogMetaData, globalWrapperRef, setDialogMetaData } = props;
-  const hoverDialogRef = useRef<HTMLAnchorElement>(null);
+  const hoverDialogRef = useRef<HTMLDivElement>(null);
   const { fallbackImage, onImageError } = useFallbackImage();
 
   const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
@@ -37,23 +37,24 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
     : "Added To Watchlist";
 
   return (
-    <Link
+    <div
       ref={hoverDialogRef}
-      href={`/movie/${dialogMetaData.id}`}
       onMouseLeave={() => setDialogMetaData(null)}
       style={{ ...calculatedPosition }}
       className={sty.dialogContainer}
     >
-      <Image
-        {...dialogMetaData.imageProps}
-        src={fallbackImage || dialogMetaData.imageProps.src}
-        alt={"dialog-focus-trap"}
-        onError={(e) => {
-          if (dialogMetaData.imageProps.onError)
-            dialogMetaData.imageProps.onError(e);
-          onImageError();
-        }}
-      />
+      <Link href={`/movie/${dialogMetaData.id}`}>
+        <Image
+          {...dialogMetaData.imageProps}
+          src={fallbackImage || dialogMetaData.imageProps.src}
+          alt={"dialog-focus-trap"}
+          onError={(e) => {
+            if (dialogMetaData.imageProps.onError)
+              dialogMetaData.imageProps.onError(e);
+            onImageError();
+          }}
+        />
+      </Link>
       <div className={sty.dialogContent}>
         <h4>{dialogMetaData.title}</h4>
         <p>{dialogMetaData.overview}</p>
@@ -72,7 +73,7 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
           {isThisInWatchlist ? isHoveredText : "Add to Watchlist"}
         </button>
       </div>
-    </Link>
+    </div>
   );
 };
 

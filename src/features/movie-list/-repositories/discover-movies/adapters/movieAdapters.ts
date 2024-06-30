@@ -19,6 +19,7 @@ const movieListAdapter = (
     overview: result.overview,
     voteAverage: result.vote_average || 0,
     voteCount: result.vote_count || 0,
+    itemType: "movie",
   }));
 };
 

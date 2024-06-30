@@ -8,4 +8,5 @@ export interface MovieTVSnapshotAttributes {
   overview: string;
   voteAverage: number;
   voteCount: number;
+  itemType: "movie" | "tv";
 }
