@@ -8,7 +8,7 @@ import Flex from "@/utils/ui/Flex";
 import sty from "./MovieDetail.module.scss";
 import { MovieDetailAttribute } from "./model";
 
-export interface MovieDetailProps {
+interface MovieDetailProps {
   id: number;
   bannerBlurDataUrl: string;
   movie: MovieDetailAttribute;

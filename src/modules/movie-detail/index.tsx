@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
 
-import { MovieDetailProps } from "./MovieDetail";
 import { movieDetailFetcher } from "./repositories/movie-detail/movieDetailFetcher";
 import movieDetailAdapter from "./repositories/movie-detail/adapter";
 import { dynamicBlurDataUrl } from "@/utils/dynamicBlurDataUrl";
 import MovieDetail from "./MovieDetail";
 
-type MovieDetailServerProps = MovieDetailProps;
+interface MovieDetailServerProps {
+  id: number;
+}
 
 const MovieDetailServer = async (props: MovieDetailServerProps) => {
   const { id } = props;
