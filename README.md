@@ -15,6 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - I'm using react query for caching purposes (performance) and currently only support modern browsers, therefore I should use polyfills for the old browsers.
 - I'm going to create more abstraction within the code to prevent any inconsistency while fetching and handling queryprefetch in the server.
 - I'm going to restructure error handling.
+- I'm going to implement pagination.
 
 
 ## Improvement

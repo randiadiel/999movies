@@ -32,6 +32,10 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
     globalWrapperRef,
   );
 
+  const closeDialog = () => {
+    setDialogMetaData(null);
+  };
+
   const isHoveredText = isHovered
     ? "Remove from Watchlist?"
     : "Added To Watchlist";
@@ -39,11 +43,15 @@ const HoverDialogCard = (props: HoverDialogCardProps) => {
   return (
     <div
       ref={hoverDialogRef}
-      onMouseLeave={() => setDialogMetaData(null)}
+      onMouseLeave={closeDialog}
       style={{ ...calculatedPosition }}
       className={sty.dialogContainer}
     >
-      <Link href={`/movie/${dialogMetaData.id}`}>
+      <Link
+        className={sty.anchorLink}
+        onClick={closeDialog}
+        href={`/${dialogMetaData.itemType}/${dialogMetaData.id}`}
+      >
         <Image
           {...dialogMetaData.imageProps}
           src={fallbackImage || dialogMetaData.imageProps.src}

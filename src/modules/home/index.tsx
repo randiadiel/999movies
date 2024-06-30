@@ -25,7 +25,7 @@ const HomeServer = async () => {
       TOP_RATED_OF_RANGE_DATE_FILTER(today, lastWeek),
     ]),
   );
-  const topTvWeek = movieListAdapter(
+  const topTvWeek = tvListAdapter(
     await tvDiscoverFetcher([TOP_RATED_OF_RANGE_DATE_FILTER(today, lastWeek)]),
   );
 

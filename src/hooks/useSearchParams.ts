@@ -1,6 +1,7 @@
 import { objectToSearchParams } from "@/utils/url";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import useOnce from "./useOnce";
 
 export const useQueryState = (key: string, initialState: string) => {
   const searchParams = useSearchParams();
@@ -16,6 +17,10 @@ export const useQueryState = (key: string, initialState: string) => {
 
     history.pushState(null, "", `?${searchParams.toString()}`);
   };
+
+  useOnce(() => {
+    setQueryParams(state);
+  });
 
   return [state, setQueryParams] as const;
 };

@@ -1,0 +1,44 @@
+.tvDetailContentContainer {
+    padding: .5rem;
+}
+
+.tvDetailBannerImage {
+    object-fit: cover;
+}
+
+.tvDetailBannerImageContainer {
+    position: relative;
+    height: 350px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(to bottom, transparent, rgb(var(--background-rgb)));
+        z-index: 1;
+    }
+}
+
+.releaseDate {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.epsContainer {
+    background: rgb(var(--card-rgb));
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.epsSeasonSelectorChip {
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.stillImage {
+    object-fit: cover;
+}

@@ -1,3 +1,5 @@
+import TVDetailServer from "@/modules/tv-detail";
+
 interface TVDetailParams {
   id: number;
 }
@@ -6,9 +8,9 @@ interface TVDetailProps {
   params: TVDetailParams;
 }
 
-const TVDetail = (props: TVDetailProps) => {
+const TVDetailPage = (props: TVDetailProps) => {
   const { params } = props;
-  return <div>My Post: {params.id}</div>;
+  return <TVDetailServer id={params.id} />;
 };
 
-export default TVDetail;
+export default TVDetailPage;
