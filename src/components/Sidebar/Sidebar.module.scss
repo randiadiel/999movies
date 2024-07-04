@@ -1,0 +1,23 @@
+.sidebarContainer {
+  background-color: black;
+  min-width: var(--sidebar-width);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+}
+
+.sidebarLinks {
+  &:hover {
+    transform: scale(1.2);
+    font-weight: bolder;
+  }
+}

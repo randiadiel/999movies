@@ -18,7 +18,7 @@ export interface SearchProps {
 
 const Search = (props: SearchProps) => {
   const { searchParams } = props;
-  const [query, setQuery] = useQueryState("query", searchParams?.query);
+  const [query, setQuery] = useQueryState("query", searchParams?.query || "");
   const debouncedQuery = useDebounce(query, 500);
   const defferedQuery = useDeferredValue(debouncedQuery);
 
